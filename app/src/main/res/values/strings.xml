@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Kotlin MVVM Sample</string>
+    <string name="loading_projects">Loading facts …</string>
+    <string name="facts_list">Facts list</string>
 </resources>

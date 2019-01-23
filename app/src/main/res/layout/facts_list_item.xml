@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="project"
+            type="infosys.com.kotlinmvvmsample.service.model.Fact" />
+        <variable
+            name="isImageLoading"
+            type="boolean" />
+    </data>
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/top_bottom_margin"
+        card_view:cardCornerRadius="@dimen/top_bottom_margin">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/top_bottom_margin"
+            android:paddingTop="@dimen/top_bottom_margin">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/top_bottom_margin"
+                android:layout_marginEnd="@dimen/left_right_margin_12dp"
+                android:layout_marginStart="@dimen/left_right_margin_12dp"
+                android:layout_marginTop="@dimen/top_bottom_margin"
+                android:text="@{fact.title}"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/title"
+                android:layout_alignStart="@+id/title"
+                android:layout_below="@+id/title"
+                android:layout_marginEnd="@dimen/left_right_margin_12dp"
+                android:layout_marginRight="@dimen/left_right_margin_12dp"
+                android:layout_toLeftOf="@+id/imageFrameLayout"
+                android:layout_toStartOf="@+id/imageFrameLayout"
+                android:text="@{fact.description}"
+                android:textColor="@color/description_black"
+                android:textSize="@dimen/description_text_size" />
+
+            <FrameLayout
+                android:id="@+id/imageFrameLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/title"
+                android:layout_alignRight="@+id/title"
+                android:layout_alignTop="@+id/title"
+                android:foregroundGravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="@dimen/imageView_width"
+                    android:layout_height="@dimen/imageView_height"
+                    android:scaleType="fitXY"
+                    app:imageUrl="@{fact.imageHref}"
+                    tools:ignore="ContentDescription" />
+
+                <ProgressBar
+                    android:id="@+id/loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    app:visibleGone="@{!isImageLoading}" />
+            </FrameLayout>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>
