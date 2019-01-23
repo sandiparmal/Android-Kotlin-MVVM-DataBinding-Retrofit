@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="project"
+            name="fact"
             type="infosys.com.kotlinmvvmsample.service.model.Fact" />
         <variable
             name="isImageLoading"
@@ -67,7 +67,6 @@
                     android:layout_width="@dimen/imageView_width"
                     android:layout_height="@dimen/imageView_height"
                     android:scaleType="fitXY"
-                    app:imageUrl="@{fact.imageHref}"
                     tools:ignore="ContentDescription" />
 
                 <ProgressBar
