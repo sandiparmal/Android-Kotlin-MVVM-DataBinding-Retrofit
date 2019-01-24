@@ -44,6 +44,9 @@ dependencies {
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit2Version"
 
+    // Picasso
+    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+
     //Gson
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit2Version"

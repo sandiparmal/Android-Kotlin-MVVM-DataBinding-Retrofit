@@ -25,11 +25,9 @@ class FactListFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, @Nullable container: ViewGroup?,
                               @Nullable savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_fact_list, container, false)
-
         factAdapter = FactAdapter(factList)
         binding?.factList?.adapter = factAdapter
         binding?.isLoading = true
-
         return binding?.root
     }
 
@@ -48,7 +46,7 @@ class FactListFragment: Fragment() {
                 //get title & rows from factResponse
                 val title = fact.title
                 (activity as AppCompatActivity).supportActionBar!!.title = title
-
+                binding?.factList?.setItemViewCacheSize(fact.rows.size)
                 binding?.isLoading = false
                 factList.clear()
                 factList.addAll(fact.rows)
