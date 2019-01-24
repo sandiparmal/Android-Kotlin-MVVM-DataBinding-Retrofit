@@ -5,17 +5,18 @@ import android.view.ViewGroup
 
 import android.view.LayoutInflater
 import android.databinding.DataBindingUtil
+import android.databinding.ObservableField
+import android.graphics.drawable.Drawable
 import infosys.com.kotlinmvvmsample.R
 import infosys.com.kotlinmvvmsample.service.model.Fact
 import infosys.com.kotlinmvvmsample.databinding.FactsListItemBinding
-
 
 class FactAdapter(private val FactList: MutableList<Fact>): RecyclerView.Adapter<FactAdapter.FactViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FactViewHolder {
         val binding = DataBindingUtil.inflate<FactsListItemBinding>(LayoutInflater.from(parent.context), R.layout.facts_list_item,
                         parent, false)
-        binding?.isImageLoading = true
+        binding.isImageLoading = true
         return FactViewHolder(binding)
     }
 

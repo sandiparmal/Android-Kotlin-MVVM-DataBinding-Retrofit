@@ -4,6 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.LiveData
 import android.util.Log
 import infosys.com.kotlinmvvmsample.service.model.Fact
+import infosys.com.kotlinmvvmsample.service.model.FactResponse
 import infosys.com.kotlinmvvmsample.view.ui.FactListFragment
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,15 +38,16 @@ class FactRepository {
     }
 
 
-    fun getFactList(): LiveData<List<Fact>> {
-        val data = MutableLiveData<List<Fact>>()
+    fun getFactList(): LiveData<FactResponse> {
+        val data = MutableLiveData<FactResponse>()
         Log.d(FactListFragment.TAG, "data response : "+data)
-        factServices?.getFactList()?.enqueue(object : Callback<List<Fact>> {
-            override fun onResponse(call: Call<List<Fact>>, response: Response<List<Fact>>) {
+        factServices?.getFactList()?.enqueue(object : Callback<FactResponse> {
+            override fun onResponse(call: Call<FactResponse>, response: Response<FactResponse>) {
                 data.value=response.body()
             }
 
-            override fun onFailure(call: Call<List<Fact>>, t: Throwable) {
+            override fun onFailure(call: Call<FactResponse>, t: Throwable) {
+                Log.d(FactListFragment.TAG, "Error While response : "+t.printStackTrace())
                 data.value=null
             }
         })

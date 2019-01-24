@@ -4,6 +4,7 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import infosys.com.kotlinmvvmsample.service.model.Fact
+import infosys.com.kotlinmvvmsample.service.model.FactResponse
 import infosys.com.kotlinmvvmsample.service.repository.FactRepository
 
 
@@ -13,7 +14,7 @@ class FactListViewModel(application: Application): AndroidViewModel(application)
     /**
      * Expose the LiveData Facts query so the UI can observe it.
      */
-    fun getProjectListObservable(): LiveData<List<Fact>> {
+    fun getFactListObservable(): LiveData<FactResponse> {
         return factListObservable
     }
 }
