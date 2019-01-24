@@ -2,7 +2,9 @@ package infosys.com.kotlinmvvmsample.service.repository
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.LiveData
+import android.util.Log
 import infosys.com.kotlinmvvmsample.service.model.Fact
+import infosys.com.kotlinmvvmsample.view.ui.FactListFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -11,7 +13,7 @@ import retrofit2.Retrofit
 
 class FactRepository {
     private val HTTPS_API_FACTS_URL = "https://dl.dropboxusercontent.com"
-    private var factServices: FactServices?=null
+    private var factServices: FactServices? = null
 
     init {
         val retrofit = Retrofit.Builder()
@@ -37,14 +39,13 @@ class FactRepository {
 
     fun getFactList(): LiveData<List<Fact>> {
         val data = MutableLiveData<List<Fact>>()
-
+        Log.d(FactListFragment.TAG, "data response : "+data)
         factServices?.getFactList()?.enqueue(object : Callback<List<Fact>> {
             override fun onResponse(call: Call<List<Fact>>, response: Response<List<Fact>>) {
                 data.value=response.body()
             }
 
             override fun onFailure(call: Call<List<Fact>>, t: Throwable) {
-                // TODO better error handling in part #2 ...
                 data.value=null
             }
         })

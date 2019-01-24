@@ -39,7 +39,7 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$rootProject.lifeCycleVersion"
     implementation "android.arch.lifecycle:runtime:$rootProject.lifeCycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifeCycleVersion"
-    kapt "com.android.databinding:compiler:$rootProject.DataBindingCompilerVersion"
+    //kapt "com.android.databinding:compiler:$rootProject.DataBindingCompilerVersion"
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit2Version"

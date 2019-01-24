@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import infosys.com.kotlinmvvmsample.R
 import infosys.com.kotlinmvvmsample.service.model.Fact
 import infosys.com.kotlinmvvmsample.view.adapter.FactAdapter
 import infosys.com.kotlinmvvmsample.databinding.FragmentFactListBinding
@@ -24,7 +25,7 @@ class FactListFragment: Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_fact_list, container, false)
 
         factAdapter = FactAdapter(factList)
-        binding?.factsList?.adapter = factAdapter
+        binding?.factList?.adapter = factAdapter
         binding?.isLoading = true
 
         return binding?.root
@@ -41,7 +42,7 @@ class FactListFragment: Fragment() {
         // Update the list when the data changes
         viewModel.getProjectListObservable().observe(this, Observer<List<Fact>> { fact ->
             if (fact != null) {
-                binding?.isLoading=false
+                binding?.isLoading = false
                 factList.clear()
                 factList.addAll(fact.toMutableList())
                 factAdapter?.notifyDataSetChanged()

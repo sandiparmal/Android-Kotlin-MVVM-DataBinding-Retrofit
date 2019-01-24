@@ -1,4 +1,4 @@
-package com.sandy.lifeevents.extensions
+package infosys.com.kotlinmvvmsample.extensions
 
 
 import android.support.v4.app.Fragment

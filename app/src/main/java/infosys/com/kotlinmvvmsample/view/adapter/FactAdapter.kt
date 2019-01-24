@@ -5,6 +5,7 @@ import android.view.ViewGroup
 
 import android.view.LayoutInflater
 import android.databinding.DataBindingUtil
+import infosys.com.kotlinmvvmsample.R
 import infosys.com.kotlinmvvmsample.service.model.Fact
 import infosys.com.kotlinmvvmsample.databinding.FactsListItemBinding
 
