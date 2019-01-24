@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable
             name="fact"
@@ -11,6 +11,7 @@
             name="isImageLoading"
             type="boolean" />
     </data>
+
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
@@ -47,14 +48,14 @@
                 android:layout_below="@+id/title"
                 android:layout_marginEnd="@dimen/left_right_margin_12dp"
                 android:layout_marginRight="@dimen/left_right_margin_12dp"
-                android:layout_toLeftOf="@+id/imageFrameLayout"
-                android:layout_toStartOf="@+id/imageFrameLayout"
+                android:layout_toLeftOf="@+id/frame_layout_image"
+                android:layout_toStartOf="@+id/frame_layout_image"
                 android:text="@{fact.description}"
                 android:textColor="@color/description_black"
                 android:textSize="@dimen/description_text_size" />
 
             <FrameLayout
-                android:id="@+id/imageFrameLayout"
+                android:id="@+id/frame_layout_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/title"
@@ -63,21 +64,19 @@
                 android:foregroundGravity="center_vertical">
 
                 <ImageView
-                    android:id="@+id/image"
+                    android:id="@+id/imv_fact_image"
                     android:layout_width="@dimen/imageView_width"
                     android:layout_height="@dimen/imageView_height"
                     android:scaleType="fitXY"
                     tools:ignore="ContentDescription" />
 
                 <ProgressBar
-                    android:id="@+id/loading"
+                    android:id="@+id/prb_loading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:visibility="gone"
-                    app:visibleGone="@{!isImageLoading}" />
+                    android:visibility="gone" />
             </FrameLayout>
         </RelativeLayout>
-
     </android.support.v7.widget.CardView>
 </layout>

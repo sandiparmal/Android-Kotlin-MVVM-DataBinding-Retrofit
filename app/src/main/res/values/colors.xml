@@ -5,4 +5,5 @@
     <color name="colorAccent">#D4DCF8</color>
     <color name="color_title">#0000FF</color>
     <color name="description_black">#000000</color>
+    <color name="cardview_background">#FFFFFFFF</color>
 </resources>

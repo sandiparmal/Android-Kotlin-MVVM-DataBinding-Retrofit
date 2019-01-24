@@ -14,7 +14,7 @@ class FactAdapter(private val FactList: MutableList<Fact>): RecyclerView.Adapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FactViewHolder {
         val binding = DataBindingUtil.inflate<FactsListItemBinding>(LayoutInflater.from(parent.context), R.layout.facts_list_item,
                         parent, false)
-
+        binding?.isImageLoading = true
         return FactViewHolder(binding)
     }
 
@@ -23,7 +23,7 @@ class FactAdapter(private val FactList: MutableList<Fact>): RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: FactViewHolder, position: Int) {
-        holder.binding.project=FactList.get(position)
+        holder.binding.fact=FactList.get(position)
         holder.binding.executePendingBindings()
     }
 

@@ -7,7 +7,6 @@ import android.support.annotation.Nullable
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
-import infosys.com.kotlinmvvmsample.R
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import infosys.com.kotlinmvvmsample.service.model.Fact

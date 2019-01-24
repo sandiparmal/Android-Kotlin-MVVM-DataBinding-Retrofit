@@ -9,8 +9,6 @@ import retrofit2.Response
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Retrofit
 
-
-
 class FactRepository {
     private val HTTPS_API_FACTS_URL = "https://dl.dropboxusercontent.com"
     private var factServices: FactServices?=null
@@ -52,14 +50,5 @@ class FactRepository {
         })
 
         return data
-    }
-
-    private fun simulateDelay() {
-        try {
-            Thread.sleep(10)
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
-        }
-
     }
 }
