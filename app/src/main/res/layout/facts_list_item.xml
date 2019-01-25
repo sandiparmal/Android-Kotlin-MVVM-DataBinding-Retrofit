@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -61,7 +60,7 @@
                 android:id="@+id/frame_layout_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/title"
+                android:layout_alignBaseline="@+id/title"
                 android:layout_alignEnd="@+id/title"
                 android:layout_alignRight="@+id/title"
                 android:foregroundGravity="center_vertical">
@@ -71,6 +70,7 @@
                     android:layout_width="@dimen/imageView_width"
                     android:layout_height="@dimen/imageView_height"
                     android:scaleType="fitXY"
+                    android:imageHref="@{fact.imageHref}"
                     tools:ignore="ContentDescription" />
 
             </FrameLayout>

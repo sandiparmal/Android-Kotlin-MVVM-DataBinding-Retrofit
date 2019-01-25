@@ -1,6 +1,6 @@
 package infosys.com.kotlinmvvmsample.service.model
 
-data class Fact(var title: String,
+class Fact(var title: String? = null,
                 var description: String? = null,
-                var imageHref: String
+                var imageHref: String? = null
                 )

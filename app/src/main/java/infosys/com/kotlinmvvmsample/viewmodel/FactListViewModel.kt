@@ -9,12 +9,13 @@ import infosys.com.kotlinmvvmsample.service.repository.FactRepository
 
 
 class FactListViewModel(application: Application): AndroidViewModel(application) {
-    private val factListObservable= FactRepository.getInstance().getFactList()
+    //private val factListObservable= FactRepository.getInstance().getFactList()
 
     /**
      * Expose the LiveData Facts query so the UI can observe it.
      */
     fun getFactListObservable(): LiveData<FactResponse> {
-        return factListObservable
+        //return factListObservable
+        return FactRepository.getInstance().getFactList();
     }
 }
