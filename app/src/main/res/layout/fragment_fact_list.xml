@@ -6,8 +6,13 @@
         <variable
             name="isLoading"
             type="boolean" />
+        <variable
+            name="isRecyclerShowing"
+            type="boolean" />
+        <variable
+            name="LoadingStatus"
+            type="String" />
     </data>
-
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/simpleSwipeRefreshLayout"
         android:layout_width="match_parent"
@@ -24,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center_horizontal"
-                android:text="@string/loading_facts"
+                android:text="@{LoadingStatus}"
                 android:textAlignment="center"
                 app:visibleGone="@{isLoading}" />
 
@@ -33,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/cardview_background"
                 android:orientation="vertical"
-                app:visibleGone="@{!isLoading}">
+                app:visibleGone="@{isRecyclerShowing}">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/fact_list"

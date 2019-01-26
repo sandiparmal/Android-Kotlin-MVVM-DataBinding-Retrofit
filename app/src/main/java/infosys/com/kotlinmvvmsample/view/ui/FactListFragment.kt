@@ -15,6 +15,7 @@ import infosys.com.kotlinmvvmsample.service.model.Fact
 import infosys.com.kotlinmvvmsample.view.adapter.FactAdapter
 import infosys.com.kotlinmvvmsample.databinding.FragmentFactListBinding
 import infosys.com.kotlinmvvmsample.service.model.FactResponse
+import infosys.com.kotlinmvvmsample.utils.ConnectivityUtils
 import infosys.com.kotlinmvvmsample.viewmodel.FactListViewModel
 import kotlinx.android.synthetic.main.fragment_fact_list.view.*
 
@@ -29,10 +30,19 @@ class FactListFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_fact_list, container, false)
         factAdapter = FactAdapter(factList)
         binding?.factList?.adapter = factAdapter
-        binding?.isLoading = true
+        showLoadingStatus()
 
         binding?.root?.simpleSwipeRefreshLayout?.setOnRefreshListener {
-            observeViewModel(viewModel)
+            if (ConnectivityUtils.isNetworkAvailable(activity!!)) {
+                showLoadingStatus()
+                binding?.isLoading = true
+                observeViewModel(viewModel)
+            } else {
+                showNetworkError()
+                binding?.isLoading = true
+                binding?.isRecyclerShowing = false
+                hideLoading()
+            }
         }
 
         rootView = binding?.root
@@ -44,20 +54,26 @@ class FactListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(FactListViewModel::class.java)
+        if (ConnectivityUtils.isNetworkAvailable(activity!!)) {
+            observeViewModel(viewModel)
+        } else {
+            binding?.isLoading = true
+            hideLoading()
+        }
 
-        observeViewModel(viewModel)
     }
 
     private fun observeViewModel(viewModel: FactListViewModel) {
         // Update the list when the data changes
         viewModel.getFactListObservable().observe(this, Observer<FactResponse> { fact ->
+            hideLoading()
             if (fact != null) {
-                rootView?.simpleSwipeRefreshLayout?.isRefreshing = false
                 //get title & rows from factResponse
                 val title = fact.title
                 (activity as AppCompatActivity).supportActionBar!!.title = title
                 binding?.factList?.setItemViewCacheSize(fact.rows.size)
                 binding?.isLoading = false
+                binding?.isRecyclerShowing = true
 
                 val mutableList = fact.rows.toMutableList()
                 for (i in fact.rows.indices) {
@@ -76,4 +92,19 @@ class FactListFragment : Fragment() {
     companion object {
         val TAG = "FactListFragment"
     }
+
+    private fun hideLoading() {
+        rootView?.simpleSwipeRefreshLayout?.isRefreshing = false
+    }
+
+    private fun showLoadingStatus() {
+        binding?.loadingStatus = getString(R.string.loading_facts)
+        binding?.isLoading = true
+        binding?.isRecyclerShowing = false
+    }
+
+    private fun showNetworkError() {
+        binding?.loadingStatus = getString(R.string.network_error)
+    }
+
 }
