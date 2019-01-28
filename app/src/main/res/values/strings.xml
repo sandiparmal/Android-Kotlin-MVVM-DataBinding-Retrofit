@@ -3,4 +3,5 @@
     <string name="loading_facts">Loading facts …</string>
     <string name="fact_list">Fact list</string>
     <string name="network_error">Network Is Not Available</string>
+    <string name="unable_fect_facts">Unable to fetch records</string>
 </resources>

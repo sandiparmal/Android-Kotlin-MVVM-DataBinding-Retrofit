@@ -68,10 +68,18 @@
                 <ImageView
                     android:id="@+id/imv_fact_image"
                     android:layout_width="@dimen/imageView_width"
-                    android:layout_height="@dimen/imageView_height"
-                    android:scaleType="fitXY"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                     android:imageHref="@{fact.imageHref}"
+                    android:scaleType="fitXY"
                     tools:ignore="ContentDescription" />
+
+                <ProgressBar
+                    android:id="@+id/loading_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone"/>
 
             </FrameLayout>
         </RelativeLayout>

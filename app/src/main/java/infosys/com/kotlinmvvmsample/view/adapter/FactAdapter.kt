@@ -6,8 +6,6 @@ import android.view.ViewGroup
 
 import android.view.LayoutInflater
 import android.databinding.DataBindingUtil
-
-import android.view.View
 import android.widget.ImageView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -33,30 +31,6 @@ class FactAdapter(private val FactList: MutableList<Fact>) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: FactViewHolder, position: Int) {
         holder.binding.fact = FactList.get(position)
         holder.binding.executePendingBindings()
-    }
-
-    companion object {
-        @BindingAdapter("android:imageHref")
-        @JvmStatic
-        fun loadImage(factImageView: ImageView, imageHref: String?) {
-            if (imageHref != "") {
-                Picasso.get()
-                        .load(imageHref)
-                        .into(factImageView, object : Callback {
-                            override fun onSuccess() {
-                                //loadingProgressBar.setVisibility(View.GONE)
-                            }
-
-                            override fun onError(e: Exception) {
-                                //loadingProgressBar.setVisibility(View.GONE)
-                                factImageView.visibility = View.GONE
-                            }
-
-                        })
-            } else {
-                factImageView.visibility = View.GONE
-            }
-        }
     }
 
     class FactViewHolder(val binding: FactsListItemBinding) : RecyclerView.ViewHolder(binding.root)
