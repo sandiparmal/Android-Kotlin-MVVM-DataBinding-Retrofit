@@ -20,7 +20,7 @@ import infosys.com.kotlinmvvmsample.utils.ConnectivityUtils
 import infosys.com.kotlinmvvmsample.viewmodel.FactListViewModel
 import kotlinx.android.synthetic.main.fragment_fact_list.view.*
 
-class FactListFragment : Fragment() {
+open class FactListFragment : Fragment() {
     private var factAdapter: FactAdapter? = null
     private var binding: FragmentFactListBinding? = null
     private var factList = mutableListOf<Fact>()
@@ -57,7 +57,7 @@ class FactListFragment : Fragment() {
 
     }
 
-    private fun observeViewModel(viewModel: FactListViewModel) {
+    fun observeViewModel(viewModel: FactListViewModel) {
         // Update the list when the data changes
         viewModel.getFactListObservable(activity!!, Injector.provideCache(activity!!)).observe(this, Observer<FactResponse> { fact ->
             hideLoading()
@@ -80,12 +80,6 @@ class FactListFragment : Fragment() {
                 factList.clear()
                 factList.addAll(mutableList)
                 factAdapter?.notifyDataSetChanged()
-            } else {
-                if (ConnectivityUtils.isNetworkAvailable(activity!!)) {
-                    binding?.loadingStatus = getString(R.string.unable_fect_facts)
-                } else {
-                    showNetworkError()
-                }
             }
         })
     }
@@ -100,7 +94,7 @@ class FactListFragment : Fragment() {
     /**
      * show loading fact status before network or database call
      */
-    private fun showLoadingStatus() {
+    public fun showLoadingStatus() {
         binding?.loadingStatus = getString(R.string.loading_facts)
         binding?.isLoading = true
         binding?.isRecyclerShowing = false

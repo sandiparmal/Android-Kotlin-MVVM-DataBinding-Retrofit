@@ -17,7 +17,7 @@ import retrofit2.Response
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Retrofit
 
-class FactRepository {
+open class FactRepository {
     private var factServices: FactServices? = null
 
     init {
